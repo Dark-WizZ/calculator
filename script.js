@@ -11,6 +11,7 @@ function operate(op, a, b){
   }
 }
 function numClick(){
+  if(this.classList[0]=='.' && (display.value.includes('.'))) return;
   if (afterOP) display.value=''
   afterOP=false;
   display.focus();
@@ -18,9 +19,13 @@ function numClick(){
 }
 function opClick(){
   afterOP=true;
+  if(this.classList[0]!='equal'){
+    this.style.backgroundColor='#22012b';
+  }
   if(operator==''){
     display.value = display.value;
   }else{
+    document.querySelector(`.${operator}`).style.backgroundColor='#460259';
     display.value = operate(operator, +input, +display.value); 
   }
   operator = (this.classList[0]=='equal')?'':this.classList[0];
@@ -32,11 +37,24 @@ function clearClick(){
   input = 0;
   operator = '';
 }
+function btnHover(){
+  let r = Math.floor(Math.random()*255);
+  let g = Math.floor(Math.random()*255);
+  let b = Math.floor(Math.random()*255);
+  this.style.color=`rgb(${r}, ${g}, ${b})`;
+  this.addEventListener('mouseout', ()=>{
+  if (this.classList[0]=='clear') {
+    this.style.color='#22012b'; return;
+  }
+    this.style.color='white';
+  })
+}
 
 let afterOP = false;
 let input = 0;
 let operator = '';
 
+const btns = document.querySelectorAll('button');
 const numBtns = document.querySelectorAll('.num');
 const display = document.querySelector('input');
 const opBtns = document.querySelectorAll('.op');
@@ -49,3 +67,6 @@ opBtns.forEach(btn=>{
   btn.addEventListener('click', opClick)
 })
 clear.addEventListener('click', clearClick);
+btns.forEach(btn=>{
+  btn.addEventListener('mouseover', btnHover);
+})
