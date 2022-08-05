@@ -4,7 +4,7 @@
   font-size: 42px;
   color: white;
   gap: 10px;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 body{
   display: flex;
@@ -18,17 +18,13 @@ button{
 .buttons button{
   min-height: 75px;
 }
-.buttons{
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-}
 .layout{
   display: flex;
   flex-direction: column;
 }
-.numbers{
+.buttons{
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
 }
 .display{
   border-radius: 4px;
@@ -39,16 +35,13 @@ button{
   max-width: 600px;
   justify-content: space-between;
 }
-.ops{
-  display: flex;
-  flex-direction: column;
-}
-#result{
+.result{
   flex: 1 1 0;
   border: 2px solid;
-  overflow:hidden;
+  overflow-y: auto;
 }
 input{
+  width: 100%;
   border: 0;
   outline: none;
 }

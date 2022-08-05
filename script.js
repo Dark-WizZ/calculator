@@ -11,3 +11,16 @@ function operate(op, a, b){
     case 'divide' : return divide(a, b);
   }
 }
+
+function numClick(){
+  display.focus();
+  display.value += this.classList[0];
+}
+
+let input = '';
+const numBtns = document.querySelectorAll('.num');
+const display = document.querySelector('input');
+
+numBtns.forEach(btn =>{
+  btn.addEventListener('click', numClick)
+})
